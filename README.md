@@ -32,7 +32,7 @@
 
 ### **simple模式（即最简单的收发模式）**
 
-![image-20200729214123032](/Users/everyman/Documents/Knowledge points/JavaPorject/rabbitmq-demo/README.assets/image-20200729214123032.png)
+![image-20200729214123032](README.assets/image-20200729214123032.png)
 
 1.消息产生消息，将消息放入队列
 
@@ -42,7 +42,7 @@
 
 ### **work工作模式(资源的竞争)**
 
-![image-20200729214135888](/Users/everyman/Documents/Knowledge points/JavaPorject/rabbitmq-demo/README.assets/image-20200729214135888.png)
+![image-20200729214135888](README.assets/image-20200729214135888.png)
 
 1.消息产生者将消息放入队列消费者可以有多个,消费者1,消费者2同时监听同一个队列,消息被消费。C1 C2共同争抢当前的消息队列内容,谁先拿到谁负责消费消息(隐患：高并发情况下,默认会产生某一个消息被多个消费者共同使用,可以设置一个开关(syncronize) 保证一条消息只能被一个消费者使用)。
 
@@ -50,7 +50,7 @@
 
 ### **publish/subscribe发布订阅(共享资源)**
 
-![image-20200729214158974](/Users/everyman/Documents/Knowledge points/JavaPorject/rabbitmq-demo/README.assets/image-20200729214158974.png)
+![image-20200729214158974](README.assets/image-20200729214158974.png)
 
 1、每个消费者监听自己的队列；
 
@@ -60,9 +60,9 @@
 
 ### **routing路由模式**
 
-![image-20200729214426817](/Users/everyman/Documents/Knowledge points/JavaPorject/rabbitmq-demo/README.assets/image-20200729214426817.png)
+![image-20200729214426817](README.assets/image-20200729214426817.png)
 
-![image-20200729214538098](/Users/everyman/Documents/Knowledge points/JavaPorject/rabbitmq-demo/README.assets/image-20200729214538098.png)
+![image-20200729214538098](README.assets/image-20200729214538098.png)
 
 1.消息生产者将消息发送给交换机按照路由判断,路由是字符串(info) 当前产生的消息携带路由字符(对象的方法),交换机根据路由的key,只能匹配上路由key对应的消息队列,对应的消费者才能消费消息;
 
@@ -74,7 +74,7 @@
 
 ### **topic 主题模式(路由模式的一种)**
 
-![image-20200729214628568](/Users/everyman/Documents/Knowledge points/JavaPorject/rabbitmq-demo/README.assets/image-20200729214628568.png)
+![image-20200729214628568](README.assets/image-20200729214628568.png)
 
 1.星号井号代表通配符
 
