@@ -3,6 +3,7 @@ package com.everyman.rabbitmqdemo.topic;
 import com.everyman.rabbitmqdemo.untils.ConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.MessageProperties;
 
 /**
  * @author zhougang
@@ -26,12 +27,13 @@ public class Send
         Connection connection = ConnectionUtil.getConnection();
         // 获取通道
         Channel channel = connection.createChannel();
-        // 声明exchange，指定类型为topic
-        channel.exchangeDeclare(EXCHANGE_NAME, "topic");
+        // 声明exchange，指定类型为topic b: 持久化
+        channel.exchangeDeclare(EXCHANGE_NAME, "topic",true);
         // 消息内容
         String message = "新增商品 : id = 1001";
         // 发送消息，并且指定routing key 为：insert ,代表新增商品
-        channel.basicPublish(EXCHANGE_NAME, "item.insert", null, message.getBytes());
+        // MessageProperties.PERSISTENT_TEXT_PLAIN 持久化
+        channel.basicPublish(EXCHANGE_NAME, "item.insert", MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
         System.out.println(" [商品服务：] Sent '" + message + "'");
         channel.close();
         connection.close();
