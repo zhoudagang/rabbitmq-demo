@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    username: admin
+    password: admin
+    virtual-host: /zhougang
+    port: 5672
