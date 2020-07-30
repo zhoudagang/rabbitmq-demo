@@ -19,7 +19,7 @@ public class Send
         Connection connection = ConnectionUtil.getConnection();
         // 获取通道
         Channel channel = connection.createChannel();
-        // 声明exchange，指定类型为fanout
+        // 声明exchange，指定类型为direct
         channel.exchangeDeclare(EXCHANGE_NAME, "direct");
         // 消息内容
         String message = "商品新增了， id = 1001";
